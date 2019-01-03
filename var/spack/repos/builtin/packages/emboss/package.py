@@ -16,9 +16,19 @@ class Emboss(AutotoolsPackage):
 
     version('6.6.0', 'cc3fca80cb0618deb10fa0d29fe90e4b')
 
-    depends_on('libxpm')
+    variant('without-x', default=False, description='Build without X support')
+    variant('without-postgresql', default=False, description='Build without postgreSQL for Ensembl access library')
+
+    depends_on('libxpm', when='~without-x')
     depends_on('libgd')
-    depends_on('postgresql')
+    depends_on('postgresql', when='~without-postgresql')
+
+    def configure_args(self):
+        args = []
+        if self.spec.satisfies('+without-x'):
+            args.append('--without-x')
+        if self.spec.satisfies('+without-postgresql'):
+            args.append('--without-postgresql')
 
     @run_after('configure')
     def skip_update_checks(self):
