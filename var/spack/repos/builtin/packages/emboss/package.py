@@ -18,18 +18,34 @@ class Emboss(AutotoolsPackage):
 
     variant('X', default=True, description='Build with X support')
     variant('postgresql', default=True, description='Build with postgreSQL support')
+    variant('mysql', default=False, description='Build with postgreSQL support')
 
     depends_on('libxpm', when='+X')
     depends_on('libgd')
     depends_on('postgresql', when='+postgresql')
+    depends_on('mysql', when='+mysql')
+
 
     def configure_args(self):
         args = []
-        if self.spec.satisfies('~X'):
+
+        if self.spec.satisfies('+X'):
+            args.append('--with-x')
+        else:
             args.append('--without-x')
-        if self.spec.satisfies('~postgresql'):
+
+        if self.spec.satisfies('+postgresql'):
+            args.append('--with-postgresql')
+        else:
             args.append('--without-postgresql')
+
+        if self.spec.satisfies('+mysql'):
+            args.append('--with-mysql')
+        else:
+            args.append('--without-mysql')
+
         return args
+
 
     @run_after('configure')
     def skip_update_checks(self):
