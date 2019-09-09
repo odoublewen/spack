@@ -14,6 +14,7 @@ class UtilLinux(AutotoolsPackage):
     list_url = "https://www.kernel.org/pub/linux/utils/util-linux"
     list_depth = 1
 
+    version('2.34', sha256='b62c92e5e1629642113cd41cec1ee86d1ee7e36b8ffe8ec3ac89c11797e9ac25')
     version('2.29.2', '24e0c67aac6f5c2535208866a42aeea2')
     version('2.29.1', 'c7d5c111ef6bc5df65659e0b523ac9d9')
     version('2.25',   'f6d7fc6952ec69c4dc62c8d7c59c1d57')
@@ -26,4 +27,7 @@ class UtilLinux(AutotoolsPackage):
         return url.format(version.up_to(2), version)
 
     def configure_args(self):
-        return ['--disable-use-tty-group']
+        args = ['--disable-makeinstall-chown',
+                '--disable-makeinstall-setuid',
+                '--disable-use-tty-group']
+        return args
