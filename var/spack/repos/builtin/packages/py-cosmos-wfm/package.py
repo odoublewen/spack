@@ -13,7 +13,7 @@ class PyCosmosWfm(PythonPackage):
     homepage = "https://mizzou-cbmi.github.io/"
     url = "https://pypi.io/packages/source/C/Cosmos-wfm/cosmos-wfm-2.8.27.tar.gz"
 
-    version('2.8.27', sha256='4204472fd9e4141042fade5d3dbf5039d6ea6bdd55aa39ff916d239bfb80e642'))
+    version('2.8.27', sha256='4204472fd9e4141042fade5d3dbf5039d6ea6bdd55aa39ff916d239bfb80e642')
 
     depends_on('py-setuptools', type='build')
     depends_on('py-flask', type=('build','run'))
@@ -26,5 +26,5 @@ class PyCosmosWfm(PythonPackage):
     depends_on('py-more-itertools', type=('build','run'))
     depends_on('py-decorator', type=('build','run'))
     depends_on('py-python-dateutil', type=('build','run'))
-    depends_on('py-subprocess32', type=('build','run'), when='python@2:2.999')
-    depends_on('py-enum34', type=('build','run'), when='python@2:3.5.999')
+    depends_on('py-subprocess32', type=('build','run'), when='^python@2:2.999')
+    depends_on('py-enum34', type=('build','run'), when='^python@2:3.5.999')
