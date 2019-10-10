@@ -11,11 +11,12 @@ class Lftp(AutotoolsPackage):
        of network protocols (ftp, http, sftp, fish, torrent)."""
 
     homepage = "http://lftp.yar.ru/"
-    url      = "http://lftp.yar.ru/ftp/lftp-4.7.7.tar.gz"
+    url      = "https://github.com/lavv17/lftp/archive/v4.6.4.tar.gz"
 
-    version('4.8.1', '419b27c016d968a0226b2e5df1454c22')
-    version('4.7.7', 'ddc71b3b11a1af465e829075ae14b3ff')
-    version('4.6.4', 'f84ecfc368b7afcc56fe7d3da2457d12')
+    version('4.8.4', sha256='0d4e7eb59c14ad3688abde54084fc247230f144ac4afdfa421a6b29174a830dd')
+    version('4.8.1', sha256='6117866215cd889dab30ff73292cd1d35fe0e12a9af5cd76d093500d07ab65a3')
+    version('4.7.7', sha256='c9d45b67a5ec744e1a2e257aed77ecd3cd1f3d412d964fb1268c175b0ea72ce8')
+    version('4.6.4', sha256='07f863a86e7d6e2fa73b45182bc57c5f4e77ce674de7fdaf8975a13d1848bf0e')
 
     depends_on('expat')
     depends_on('libiconv')
